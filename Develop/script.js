@@ -11,7 +11,16 @@ function generatePassword() {
   var selectedOptions = [];
   var typeSelection = false;
 
-  
+  function getPasswordLength() {
+    var userChoice = 0;
+    while ((userChoice < 8) || (userChoice > 128)) {
+      userChoice = parseInt(window.prompt("How long do you want your password to be? (between 8 and 128): "));
+      if (isNaN(userChoice)) {
+        userChoice = 0;
+      }
+    }
+    return userChoice;
+  }
 
   while (typeSelection == false) {
     var capital = getChoice("uppercase");
@@ -44,19 +53,6 @@ function generatePassword() {
   }
 
   return passwordString;
-
-
-  function getPasswordLength() {
-    var userChoice = 0;
-    while ((userChoice < 8) || (userChoice > 128)) {
-      userChoice = parseInt(window.prompt("How long do you want your password to be? (between 8 and 128): "));
-      if (isNaN(userChoice)) {
-        userChoice = 0;
-      }
-    }
-    return userChoice;
-  }
-
 
 
   function getChoice(currentOption) {
